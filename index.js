@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+
 const express = require("express");
 const cors = require("cors");
 const { neon } = require("@neondatabase/serverless");
@@ -56,5 +57,5 @@ app.get("/db-test", async (req, res) => {
     res.status(500).json({ error: "Failed to connect to the database" });
   }
 });
-const port = 3001;
+// const port = 3001;
 app.listen(port, "0.0.0.0", () => console.log(`Server is running at http://school.geoparchin.com`));
