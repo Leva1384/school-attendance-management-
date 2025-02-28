@@ -15,7 +15,7 @@ const handleSubmit = async (e) => {
     };
   
     try {
-      const response = await fetch("http://localhost:3001/admin/add", {
+      const response = await fetch("http://school.geoparchin.com/api/admin/add", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

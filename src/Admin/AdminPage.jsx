@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from "react";
 import * as React from 'react';
+import axios from "axios";
 import Box from '@mui/material/Box';
 import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
@@ -138,7 +139,7 @@ function Row({ row, students, selectedClasses, onCheckboxClick, isAllClassesSele
                             />
                           </TableCell>
                           <TableCell>{student.id}</TableCell>
-                          <TableCell>{student.name}</TableCell>
+                          <TableCell>{student.student_name.trim()}</TableCell>
                           <TableCell>{student.class_id}</TableCell>
                         </TableRow>
                       );
@@ -268,12 +269,12 @@ const navigate=useNavigate();
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const classResponse = await fetch("http://localhost:3001/admin/classes");
+        const classResponse = await fetch("http://school.geoparchin.com/api/admin/classes");
         const classData = await classResponse.json();
         setClasses(classData);
         
 
-        const studentResponse = await fetch("http://localhost:3001/students");
+        const studentResponse =  await fetch("http://school.geoparchin.com/apistudents");
         const studentData = await studentResponse.json();
         console.log("Fetched students:", studentData);
         setStudents(studentData);
@@ -288,7 +289,7 @@ const navigate=useNavigate();
 const onDeleteClasses = async (selectedClasses) => {
     console.log("Selected classes for deletion:", selectedClasses);
     try {
-      const response = await fetch("http://localhost:3001/admin/delete", {
+      const response = await fetch("http://school.geoparchin.com/api/admin/delete", {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -312,7 +313,7 @@ const onDeleteClasses = async (selectedClasses) => {
   const onDeleteStudents = async (selectedStudents) => {
     console.log("Selected students for deletion:", selectedStudents);
     try {
-      const response = await fetch("http://localhost:3001/deleteStudents", {
+      const response = await fetch("http://school.geoparchin.com/api/deleteStudents", {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

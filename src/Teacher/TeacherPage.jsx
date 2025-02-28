@@ -27,7 +27,7 @@ const TeacherPage = () => {
         }
     
         try {
-            const response = await fetch("http://localhost:3001/attendance", {
+            const response = await fetch("http://school.geoparchin.com/api/attendance", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ studentId, status }),
