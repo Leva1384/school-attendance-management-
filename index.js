@@ -1,10 +1,12 @@
+require('dotenv').config();
+
 const express = require("express");
 const cors = require("cors");
 const { neon } = require("@neondatabase/serverless");
 
 
 const app = express();
-const port = 3001;
+
 
 const DATABASE_URL = "postgresql://neondb_owner:npg_fYakZK5bTRH8@ep-purple-glade-a8tgoeci-pooler.eastus2.azure.neon.tech/neondb?sslmode=require";
 const sql = neon(DATABASE_URL);
@@ -42,8 +44,8 @@ app.use("/deleteStudents", deleteStudentsRoutes);
  app.use("/addStudents",addStudentsRoutes);
  const teacherClassesRoutes=require("./Teacher/class");
  app.use("/teacher/class",teacherClassesRoutes);
- const attendanceStudentsRoutes = require("./attendance");
-app.use("/attendance", attendanceStudentsRoutes); 
+//  const attendanceStudentsRoutes = require("./attendance");
+// app.use("/attendance", attendanceStudentsRoutes); 
 
 app.get("/db-test", async (req, res) => {
   try {
@@ -54,5 +56,5 @@ app.get("/db-test", async (req, res) => {
     res.status(500).json({ error: "Failed to connect to the database" });
   }
 });
-
-app.listen(port, () => console.log(`Server is running at http://localhost:${port}`));
+const port = 3001;
+app.listen(port, "0.0.0.0", () => console.log(`Server is running at http://school.geoparchin.com`));
