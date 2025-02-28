@@ -57,5 +57,5 @@ app.get("/db-test", async (req, res) => {
     res.status(500).json({ error: "Failed to connect to the database" });
   }
 });
-// const port = 3001;
+const port = process.env.PORT || 3001; // Use the port provided by the hosting service, or default to 3001
 app.listen(port, "0.0.0.0", () => console.log(`Server is running at http://school.geoparchin.com`));
